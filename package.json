@@ -1,0 +1,22 @@
+{
+  "name": "edx-semantic",
+  "version": "0.0.1",
+  "description": "A semantic CSS framework for edX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Nickerson",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-sass": "^2.0.4"
+  },
+  "dependencies": {
+    "bi-app-sass": "^1.0.0",
+    "bourbon": "^4.2.3",
+    "breakpoint-sass": "^2.6.1",
+    "susy": "^2.2.5"
+  }
+}

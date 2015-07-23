@@ -1,0 +1,46 @@
+@mixin banner($color, $image: null) {
+
+    @include calc(top, '160px - 18px');
+    @include box-sizing(border-box);
+    @include size(100% 18px);
+
+    background: $color;
+    color: #FFF;
+    line-height: 18px;
+    padding-right: if($image, 54px, 15px);
+    position: absolute;
+    left: 0;
+
+    font: {
+        weight: font-weight(bold);
+        size: font-size(xx-small);
+    };
+
+    text: {
+        align: right;
+        transform: uppercase;
+    };
+
+    @if ($image) {
+
+        &:after {
+            content: '';
+            width: 34px;
+            height: 45px;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            background: url($image) -8px -6px no-repeat;
+        }
+
+    }
+
+}
+
+@mixin border-radius($radius) {
+    @include prefixer(border-radius, $radius, webkit moz spec);
+}
+
+@mixin box-sizing($sizing) {
+    @include prefixer(box-sizing, $sizing, webkit moz spec);
+}

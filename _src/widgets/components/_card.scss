@@ -1,0 +1,184 @@
+// ------------------------------
+// edX Widget Library: Components - Course Cards
+
+// About: Contains base styling for demonstration and utility for course cards.
+// ----------------------------
+
+// ------------------------------
+// #GLOBAL
+// ------------------------------
+.course.card {
+
+    @include calc(width, '25% - 15px');
+
+    border-bottom: 3px solid #3185BD;
+    height: 360px;
+    margin: spacing-vertical(small) spacing-horizontal(base);
+    padding: 0;
+    position: relative;
+
+    // Image thumbnail
+    > .preview {
+
+        @include size(100% 160px);
+
+        overflow: hidden;
+        position: relative;
+
+        > img {
+            width:100%;
+        }
+
+    }
+
+    // Main card content
+    > .content {
+
+        padding: spacing-vertical(small) spacing-horizontal(base);
+
+        // Usually university name and course CRN
+        > .info {
+
+            color: palette(grayscale, x-dark);
+            line-height: line-height(base);
+            margin: 0;
+
+            font: {
+                weight: font-weight(normal);
+                size: font-size(small);
+            };
+
+        }
+
+        // Name of the course
+        > .title {
+
+            color: palette(secondary, x-dark);
+            margin: 5px 0;
+            font: {
+                weight: font-weight(normal);
+                size: font-size(large);
+            };
+
+        }
+
+        // Availability status of the course
+        > .availability {
+
+            color: palette(grayscale, dark);
+            display: block;
+            float: none;
+            line-height: line-height(large);
+            position: relative;
+            margin: 15px 0 0;
+
+            font: {
+                weight: font-weight(light);
+                size: font-size(x-small);
+            }
+
+        }
+
+        // Start date of course
+        > .date {
+
+            color: palette(grayscale, x-dark);
+            display: block;
+            float: none;
+            line-height: line-height(x-large);
+            margin: 0;
+            position: relative;
+
+            font: {
+                weight: font-weight(normal);
+                size: font-size(small);
+            }
+        }
+    }
+}
+
+// ------------------------------
+// #CARDS WITH OVERLAYS
+// ------------------------------
+.hoverable.course.card {
+
+    cursor: pointer;
+
+    &:hover {
+
+        > .preview:before {
+            opacity:0.75;
+        }
+
+        > .preview:after {
+            opacity:1;
+        }
+    }
+
+    > .preview:before {
+
+        @include position(absolute, 0 null null 0);
+        @include size(100%);
+        @include transition(all 0.2s ease-out);
+
+        background: palette(grayscale, black-t);
+        content: '';
+        opacity: 0;
+
+    }
+
+    > .preview:after {
+
+        @include border-radius(3px);
+        @include box-sizing(border-box);
+        @include calc(top, '55px - 25px');
+        @include calc(left, '50% - 100px');
+        @include size(200px 50px);
+        @include transition(all 0.2s ease-out);
+
+        border: 3px solid #FFF;
+        color: #FFF;
+        content: 'Learn More';
+        line-height: 44px;
+        opacity: 0;
+        padding: 0 20px;
+        position: absolute;
+        z-index: 20;
+
+        font: {
+            family: $font-family-sans-serif;
+            size: font-size(large);
+            weight: font-weight(semi-bold);
+        };
+
+        text: {
+            align: center;
+            transform: uppercase;
+        };
+
+    }
+
+}
+
+// ------------------------------
+// #VERIFIED CARDS
+// ------------------------------
+.verified.course.card {
+    border-color: palette(success, dark);
+
+    .banner {
+        @include banner(palette(success, dark), './images/verified.png');
+    }
+}
+
+// ------------------------------
+// #PROFESSIONAL ED CARDS
+// ------------------------------
+.professional.course.card {
+    border-color: palette(secondary, x-dark);
+
+    .banner {
+        @include banner(palette(secondary, x-dark));
+    }
+
+}

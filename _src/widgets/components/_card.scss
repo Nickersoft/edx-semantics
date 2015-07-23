@@ -9,11 +9,14 @@
 // ------------------------------
 .course.card {
 
-    @include calc(width, '25% - 15px');
+    @include tablet {
+        @include calc(width, '25% - 15px');
+    }
 
     border-bottom: 3px solid #3185BD;
     height: 360px;
     margin: spacing-vertical(small) spacing-horizontal(base);
+    overflow: hidden;
     padding: 0;
     position: relative;
 
@@ -26,6 +29,8 @@
         position: relative;
 
         > img {
+            max-width: 378px;
+            min-width: 280px;
             width:100%;
         }
 

@@ -1,3 +1,21 @@
+@mixin desktop {
+    @media screen and (min-width: $bp-screen-lg) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $bp-screen-md) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media screen and (min-width: $bp-screen-sm) {
+        @content;
+    }
+}
+
 @mixin banner($color, $image: null) {
 
     @include calc(top, '160px - 18px');

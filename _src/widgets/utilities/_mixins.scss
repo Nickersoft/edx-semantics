@@ -1,33 +1,34 @@
 @mixin desktop {
-    @media screen and (min-width: $bp-screen-lg) {
+    @media screen and (max-width: $bp-screen-lg) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media screen and (min-width: $bp-screen-md) {
+    @media screen and (max-width: $bp-screen-md) {
         @content;
     }
 }
 
 @mixin mobile {
-    @media screen and (min-width: $bp-screen-sm) {
+    @media screen and (max-width: $bp-screen-sm) {
         @content;
     }
 }
 
 @mixin banner($color, $image: null) {
 
-    @include calc(top, '160px - 18px');
     @include box-sizing(border-box);
     @include size(100% 18px);
 
     background: $color;
-    color: #FFF;
+    color: if(lightness($color) > 50, palette(grayscale, black),  palette(grayscale, white));
+    display: block;
     line-height: 18px;
     padding-right: if($image, 54px, 15px);
     position: absolute;
     left: 0;
+    margin-top: -18px;
 
     font: {
         weight: font-weight(bold);
@@ -57,6 +58,11 @@
 
 @mixin border-radius($radius) {
     @include prefixer(border-radius, $radius, webkit moz spec);
+}
+
+
+@mixin box-shadow($shadow) {
+    @include prefixer(box-sizing, $shadow, webkit moz spec);
 }
 
 @mixin box-sizing($sizing) {

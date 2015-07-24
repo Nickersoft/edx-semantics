@@ -1,0 +1,24 @@
+.collection {
+
+    .row {
+        margin-bottom: spacing-vertical(small);
+    }
+
+    @include mobile {
+        .row {
+            margin-bottom: 0;
+        }
+    }
+
+    @include mobile {
+
+        padding: spacing-vertical(small) spacing-horizontal(small);
+
+        @for $i from 1 through 12 {
+            > .row > .col-#{$i} {
+                width: 100% !important;
+            }
+        }
+
+    }
+}

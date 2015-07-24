@@ -9,28 +9,25 @@
 // ------------------------------
 .course.card {
 
-    @include tablet {
-        @include calc(width, '25% - 15px');
-    }
-
     border-bottom: 3px solid #3185BD;
     height: 360px;
-    margin: spacing-vertical(small) spacing-horizontal(base);
-    overflow: hidden;
     padding: 0;
     position: relative;
+
+    > .banner {
+        display:none;
+    }
 
     // Image thumbnail
     > .preview {
 
-        @include size(100% 160px);
+        @include size(100% auto);
 
+        height: 168px;
         overflow: hidden;
         position: relative;
 
         > img {
-            max-width: 378px;
-            min-width: 280px;
             width:100%;
         }
 
@@ -60,6 +57,7 @@
 
             color: palette(secondary, x-dark);
             margin: 5px 0;
+            height: 55px;
             font: {
                 weight: font-weight(normal);
                 size: font-size(large);
@@ -99,6 +97,10 @@
                 size: font-size(small);
             }
         }
+    }
+
+    @include mobile {
+        margin: 0 0 spacing-vertical(base);
     }
 }
 
@@ -172,7 +174,7 @@
     border-color: palette(success, dark);
 
     .banner {
-        @include banner(palette(success, dark), './images/verified.png');
+        @include banner(palette(success, dark), './images/edx-png/verified.png');
     }
 }
 
@@ -184,6 +186,75 @@
 
     .banner {
         @include banner(palette(secondary, x-dark));
+    }
+
+}
+
+// ------------------------------
+// #CREDIT CARDS
+// ------------------------------
+.credit.course.card {
+    border-color: palette(warning, base);
+
+    .banner {
+        @include banner(palette(warning, base));
+    }
+
+}
+
+
+// ------------------------------
+// #XSERIES CARDS
+// ------------------------------
+.xseries.course.card {
+
+    border-color: transparent;
+
+    .banner {
+        @include banner(palette(grayscale, black));
+    }
+
+    .title {
+        color: palette(grayscale, black);
+        height: auto;
+        font-size: font-size(x-large);
+        margin-top: 15px;
+    }
+
+    .description {
+        color: palette(grayscale, base);
+        margin-bottom: 10px;
+    }
+
+    .availability {
+        font-size: font-size(small);
+        color: palette(grayscale, x-dark);
+    }
+
+}
+
+.course.card.stack {
+
+    &:before,
+    &:after {
+        @include box-shadow(0px 2px 2px 0px rgba(0, 0, 0, 0.2));
+        @include size(100%);
+        content: '';
+        position: absolute;
+        background: palette(grayscale, light);
+        border: 1px solid palette(grayscale, base);
+      }
+
+    &:before {
+        left: -5px;
+        top: -5px;
+        z-index: -1;
+    }
+
+    &:after {
+        left: -10px;
+        top: -10px;
+        z-index: -2;
     }
 
 }

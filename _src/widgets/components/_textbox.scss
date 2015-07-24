@@ -1,0 +1,13 @@
+.inline {
+    display: inline-block;
+}
+
+.input-group {
+
+    .btn:last-of-type {
+
+        @include border-left-radius(0);
+
+        margin-left:-4px;
+    }
+}
